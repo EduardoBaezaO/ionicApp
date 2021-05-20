@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { DeseosService } from '../../services/deseos.service';
 import { Lista } from '../../models/lista.model';
 import { ListaItem } from '../../models/lista-item.model';
-import { createOfflineCompileUrlResolver } from '@angular/compiler';
 
 @Component({
   selector: 'app-agregar',

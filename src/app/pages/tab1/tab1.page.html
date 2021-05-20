@@ -8,14 +8,7 @@
 
 <ion-content [fullscreen]="true" color="dark">
 
-    <ion-list color="dark">
-        <ion-item (click)="verTareas( lista )" *ngFor="let lista of deseosService.listas" detail color="dark">
-            <ion-label>
-                {{ lista.titulo }}
-            </ion-label>
-            <ion-note slot="end" color="tertiary">{{ lista.items.length }} items</ion-note>
-        </ion-item>
-    </ion-list>
+    <app-listas [tabPg]=1></app-listas>
 
     <!-- fab placed to the top end -->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">

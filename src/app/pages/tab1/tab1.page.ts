@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { DeseosService } from '../../services/deseos.service';
-import { Lista } from '../../models/lista.model';
 
 @Component({
   selector: 'app-tab1',
@@ -14,12 +13,6 @@ export class Tab1Page {
   constructor( public deseosService: DeseosService,
                private router: Router,
                private alertCtrl: AlertController ) {
-  }
-
-  verTareas( lista: Lista){
-    console.log("verTareas()");
-    console.log(lista.titulo);
-    this.router.navigateByUrl(`/tabs/tab1/agregar/${ lista.id }`);
   }
 
   async agregarLista(){

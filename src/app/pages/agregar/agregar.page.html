@@ -12,11 +12,11 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" color="dark">
-    <h1>Agregar Lista</h1>
+<ion-content [fullscreen]="true" color="medium">
+    <h1>Agregar Tarea</h1>
     <ion-list color="dark">
         <ion-item color="dark">
-            <ion-label position="floating">Nuevo item</ion-label>
+            <ion-label position="floating">Nueva tarea</ion-label>
             <!-- [(ngModel)]="<var>"" parentesis () emite un evento y parantesis [] escucha un evento -->
             <ion-input type="text" [(ngModel)]="nombreItem" (Keyup.enter)="agregarItem()"></ion-input>
         </ion-item>
@@ -24,12 +24,12 @@
 
 
     <ion-list>
-        <ion-list-header *ngIf="lista.items.length > 0" color="dark">
+        <ion-list-header *ngIf="lista.items.length > 0" color="medium">
             <ion-label>Tareas por hacer</ion-label>
         </ion-list-header>
 
         <ion-item-sliding *ngFor="let item of lista.items; let i = index" class="animated fadeInDown">
-            <ion-item color="dark">
+            <ion-item color="medium">
                 <ion-checkbox class="ion-margin" color="tertiary" checked="{{ item.completado }}" [(ngModel)]="item.completado" (ionChange)="updateItemCompletado( item )"></ion-checkbox>
                 <ion-label>{{ item.desc }}</ion-label>
             </ion-item>

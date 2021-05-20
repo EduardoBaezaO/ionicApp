@@ -25,7 +25,7 @@ export class DeseosService {
     const nuevaLista = new Lista(titulo);
     this.listas.push( nuevaLista );
     this.guardarStorage();
-
+    // console.log(nuevaLista);
     return nuevaLista.id;
   }
 
@@ -34,16 +34,35 @@ export class DeseosService {
     return this.listas.find( listaData => listaData.id === id );
   }
 
-  guardarStorage(){
-    localStorage.setItem('data', JSON.stringify( this.listas ));
+  borrarLista( lista: Lista ){
+    // console.log(lista.id);
+      this.listas = this.listas.filter( listaData => listaData.id !== lista.id );   
+      this.guardarStorage();    
   }
 
+  guardarStorage(){
+    localStorage.setItem('data', JSON.stringify( this.listas ));
+  }S
 
   cargarStorage(){ 
     if ( localStorage.getItem('data') ){
       this.listas = JSON.parse( localStorage.getItem( 'data' ));
     }else{
       this.listas = [];
+    }
+  }
+
+  tareasPendientes( lista: Lista ){
+    return lista.items.filter( tp => !tp.completado ).length;
+  };
+
+  obtenerListas( tabPg: number ){
+    console.log(tabPg);
+    if (tabPg === 1){
+      return this.listas.filter( terminadas => !terminadas.terminada)
+    }
+    if(tabPg === 2){
+      return this.listas.filter( terminadas => terminadas.terminada)
     }
   }
 
