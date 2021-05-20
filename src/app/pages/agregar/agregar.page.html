@@ -1,0 +1,46 @@
+<!-- <h1>Agregar Lista</h1> -->
+
+<ion-header no-border>
+    <ion-toolbar color="dark">
+
+        <ion-buttons slot="start">
+            <ion-back-button color="tertiary" defaultHref="/"></ion-back-button>
+        </ion-buttons>
+
+        <ion-title>{{ lista.titulo }}</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="dark">
+    <h1>Agregar Lista</h1>
+    <ion-list color="dark">
+        <ion-item color="dark">
+            <ion-label position="floating">Nuevo item</ion-label>
+            <!-- [(ngModel)]="<var>"" parentesis () emite un evento y parantesis [] escucha un evento -->
+            <ion-input type="text" [(ngModel)]="nombreItem" (Keyup.enter)="agregarItem()"></ion-input>
+        </ion-item>
+    </ion-list>
+
+
+    <ion-list>
+        <ion-list-header *ngIf="lista.items.length > 0" color="dark">
+            <ion-label>Tareas por hacer</ion-label>
+        </ion-list-header>
+
+        <ion-item-sliding *ngFor="let item of lista.items; let i = index" class="animated fadeInDown">
+            <ion-item color="dark">
+                <ion-checkbox class="ion-margin" color="tertiary" checked="{{ item.completado }}" [(ngModel)]="item.completado" (ionChange)="updateItemCompletado( item )"></ion-checkbox>
+                <ion-label>{{ item.desc }}</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+                <ion-item-option (click)="borrar(i)" color="danger">
+                    <ion-icon slot="icon-only" name="close"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+
+
+</ion-content>
